@@ -53,7 +53,7 @@ git branch -M main
 git push -u origin main
 ```
 
-Use GitHub Desktop if preferred. Never commit `.env`, Apple certificates or credentials.
+Use GitHub Desktop if preferred. After `npm install` generates `package-lock.json`, commit it with `git add package-lock.json && git commit -m "chore: lock dependencies" && git push`. Never commit `.env`, Apple certificates or credentials.
 
 ## Build for App Store (no Mac required)
 

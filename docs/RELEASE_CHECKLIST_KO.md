@@ -22,6 +22,10 @@
 
 3. GitHub 웹에서 소스와 첫 커밋 확인. 별도 비밀키나 인증 파일은 push하지 않기.
 
+## 등록 전 유의사항
+
+**개인(Individual) Apple Developer 계정으로 공개 출시하면 앱스토어 판매자(Seller)에 법적 실명이 표시됩니다.** 개인 정보 공개 여부를 고려하고, 조직명으로 표시하려면 Apple의 조직 가입 요건을 별도로 검토하세요.
+
 ## 단계 2. Apple Developer / Expo (유료 개발자 회원 자격 필요)
 
 - [ ] Apple Developer Program 가입·활성화
