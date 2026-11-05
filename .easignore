@@ -1,0 +1,10 @@
+.git
+node_modules
+.expo
+*.log
+.env
+.env.*
+README.md
+AGENTS.md
+tests
+# keep app.json, App.js, index.js, assets and src
