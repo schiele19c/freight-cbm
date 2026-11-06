@@ -3,6 +3,7 @@ import {
   Alert,
   Keyboard,
   KeyboardAvoidingView,
+  Linking,
   Platform,
   Pressable,
   ScrollView,
@@ -20,6 +21,8 @@ const INK = '#173A56';
 const MUTED = '#637789';
 const ACCENT = '#1473C9';
 const BG = '#F4F7FA';
+const PRIVACY_URL = 'https://schiele19c.github.io/freight-cbm/privacy.html';
+const SUPPORT_URL = 'https://schiele19c.github.io/freight-cbm/support.html';
 const UNITS = [
   { value: 'cm', label: 'cm' },
   { value: 'in', label: 'inch' },
@@ -49,6 +52,14 @@ function Field({ label, value, onChange, suffix, accessibilityLabel }) {
       </View>
     </View>
   );
+}
+
+async function openExternalPage(url) {
+  try {
+    await Linking.openURL(url);
+  } catch {
+    Alert.alert('Unable to open page', 'Please check your internet connection and try again.');
+  }
 }
 
 function CalculatorScreen() {
@@ -172,6 +183,24 @@ function CalculatorScreen() {
           <Text style={styles.disclaimer}>
             CBM = L × W × H (in metres) × quantity. Use external package dimensions and verify measurements before booking.
           </Text>
+          <View style={styles.footerLinks}>
+            <Pressable
+              accessibilityRole="link"
+              accessibilityLabel="Open privacy policy"
+              onPress={() => openExternalPage(PRIVACY_URL)}
+              style={styles.footerLink}
+            >
+              <Text style={styles.footerLinkText}>Privacy Policy</Text>
+            </Pressable>
+            <Pressable
+              accessibilityRole="link"
+              accessibilityLabel="Open support page"
+              onPress={() => openExternalPage(SUPPORT_URL)}
+              style={styles.footerLink}
+            >
+              <Text style={styles.footerLinkText}>Support</Text>
+            </Pressable>
+          </View>
           <Text style={styles.footer}>OFFLINE · NO ACCOUNT · NO TRACKING</Text>
         </ScrollView>
       </KeyboardAvoidingView>
@@ -228,5 +257,8 @@ const styles = StyleSheet.create({
   clearButton: { alignSelf: 'center', padding: 13, marginTop: 12 },
   clearButtonText: { color: ACCENT, fontWeight: '700', fontSize: 14 },
   disclaimer: { color: MUTED, fontSize: 11, textAlign: 'center', lineHeight: 17, marginTop: 7, marginHorizontal: 9 },
-  footer: { fontSize: 10, fontWeight: '800', color: '#91A4B4', letterSpacing: 1.3, textAlign: 'center', marginTop: 18 },
+  footerLinks: { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 16, marginTop: 10 },
+  footerLink: { paddingVertical: 9, paddingHorizontal: 8 },
+  footerLinkText: { fontSize: 12, color: ACCENT, fontWeight: '700', textDecorationLine: 'underline' },
+  footer: { fontSize: 10, fontWeight: '800', color: '#91A4B4', letterSpacing: 1.3, textAlign: 'center', marginTop: 8 },
 });
